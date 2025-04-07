@@ -1,0 +1,11 @@
+name: latihan-cs-mlflow
+
+conda_env: conda.yaml
+
+entry_points:
+  main:
+    parameters:
+      n_estimators: {type: int, default: 505}
+      max_depth: {type: int, default: 35}
+      dataset : {type: string, default: "train_pca.csv"}
+    command: "python modelling.py {n_estimators} {max_depth} {dataset}"
