@@ -9,8 +9,4 @@ entry_points:
       max_depth: {type: int, default: 35}
       dataset : {type: string, default: "train_pca.csv"}
     command: >
-      DAGSHUB_USERNAME=${DAGSHUB_USERNAME}
-      DAGSHUB_TOKEN=${DAGSHUB_TOKEN}
-      MLFLOW_TRACKING_USERNAME=${DAGSHUB_USERNAME}
-      MLFLOW_TRACKING_PASSWORD=${DAGSHUB_TOKEN}
       python modelling.py {n_estimators} {max_depth} {dataset}
