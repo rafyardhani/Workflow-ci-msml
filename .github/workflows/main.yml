@@ -42,7 +42,7 @@ jobs:
           DAGSHUB_USERNAME: ${{ secrets.DAGSHUB_USERNAME }}
           DAGSHUB_TOKEN: ${{ secrets.DAGSHUB_TOKEN }}
         run: |
-          mlflow run MLproject --env-manager=local 
+          mlflow run MLproject --no-conda --env-manager=local 
       
       # Get latest run_id
       - name: Get latest MLflow run_id
