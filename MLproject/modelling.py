@@ -11,13 +11,6 @@ import dagshub
 if __name__ == "__main__":
     warnings.filterwarnings("ignore")
     np.random.seed(40)
-    dagshub_username = f'rafyardhani'
-    dagshub_token = f'506d5da4105cf2853e4f97d616bddfd1dd862253'
-    os.environ['MLFLOW_TRACKING_USERNAME'] = dagshub_username
-    os.environ['MLFLOW_TRACKING_PASSWORD'] = dagshub_token
-
-    mlflow_tracking_uri = f"https://dagshub.com/{dagshub_username}/mlsystem-studi-kasus-cs.mlflow"
-    mlflow.set_tracking_uri(mlflow_tracking_uri)
     # Read the wine-quality csv file (make sure you're running this from the root of MLflow!)
     file_path = sys.argv[3] if len(sys.argv) > 3 else os.path.join(os.path.dirname(os.path.abspath(__file__)), "train_pca.csv")
     data = pd.read_csv(file_path)
