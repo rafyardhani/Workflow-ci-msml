@@ -13,8 +13,6 @@ if __name__ == "__main__":
     np.random.seed(40)
     dagshub_token = os.environ.get("DAGSHUB_TOKEN")
     dagshub_username = os.environ.get("DAGSHUB_USERNAME")
-    os.environ['MLFLOW_TRACKING_USERNAME'] = dagshub_username
-    os.environ['MLFLOW_TRACKING_PASSWORD'] = dagshub_token
             
     mlflow_tracking_uri = f"https://dagshub.com/{dagshub_username}/mlsystem-studi-kasus-cs.mlflow"
     mlflow.set_tracking_uri(mlflow_tracking_uri)
