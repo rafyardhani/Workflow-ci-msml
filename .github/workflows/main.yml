@@ -34,10 +34,13 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install mlflow  
+          pip install mlflow dagshub==0.3.15
           
       # Run as a mlflow project
       - name: Run mlflow project
+        env:
+          DAGSHUB_USERNAME: ${{ secrets.DAGSHUB_USERNAME }}
+          DAGSHUB_TOKEN: ${{ secrets.DAGSHUB_TOKEN }}
         run: |
           mlflow run MLproject --env-manager=local 
       
