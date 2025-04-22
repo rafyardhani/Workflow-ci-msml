@@ -8,7 +8,5 @@ entry_points:
       n_estimators: {type: int, default: 505}
       max_depth: {type: int, default: 35}
       dataset : {type: string, default: "train_pca.csv"}
-      MLFLOW_TRACKING_USERNAME: {type: string, default: ${{ secrets.DAGSHUB_USERNAME }}}
-      MLFLOW_TRACKING_PASSWORD: {type: string, default: ${{ secrets.DAGSHUB_TOKEN }}} 
     command: >
-      python modelling.py {n_estimators} {max_depth} {dataset} {MLFLOW_TRACKING_USERNAME} {MLFLOW_TRACKING_PASSWORD}
+      python modelling.py {n_estimators} {max_depth} {dataset} 
