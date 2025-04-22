@@ -11,4 +11,4 @@ entry_points:
       dagshub_username: {type: string}
       dagshub_token: {type: string}
     command: >
-      python modelling.py {n_estimators} {max_depth} {dataset} 
+      python modelling.py {n_estimators} {max_depth} {dataset} {dagshub_username} {dagshub_token}
