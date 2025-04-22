@@ -44,7 +44,8 @@ jobs:
         run: |
           export MLFLOW_TRACKING_USERNAME=$DAGSHUB_USERNAME
           export MLFLOW_TRACKING_PASSWORD=$DAGSHUB_TOKEN
-          mlflow run MLproject --env-manager=local 
+          python MLProject/modelling.py 505 35 MLProject/train_pca.csv 
+      # mlflow run MLproject --env-manager=local 
       
       # Get latest run_id
       - name: Get latest MLflow run_id
