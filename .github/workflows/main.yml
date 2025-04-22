@@ -35,7 +35,7 @@ jobs:
       # Run as a mlflow project
       - name: Run mlflow project
         run: |
-          mlflow run MLproject -P dagshub_username=${{ secrets.DAGSHUB_USERNAME }} -P dagshub_token=${{ secrets.DAGSHUB_TOKEN }} --env-manager=local 
+          mlflow run MLproject -P --env-manager=local 
       
       # Get latest run_id
       - name: Get latest MLflow run_id

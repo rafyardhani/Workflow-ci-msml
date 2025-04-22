@@ -11,8 +11,8 @@ import dagshub
 if __name__ == "__main__":
     warnings.filterwarnings("ignore")
     np.random.seed(40)
-    dagshub_username = sys.argv[4]
-    dagshub_token = sys.argv[5]
+    dagshub_username = f'rafyardhani'
+    dagshub_token = f'506d5da4105cf2853e4f97d616bddfd1dd862253'
     os.environ['MLFLOW_TRACKING_USERNAME'] = dagshub_username
     os.environ['MLFLOW_TRACKING_PASSWORD'] = dagshub_token
 
