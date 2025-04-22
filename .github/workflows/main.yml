@@ -34,7 +34,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install mlflow dagshub==0.3.15
+          pip install mlflow==2.19.0 dagshub==0.3.15
           
       # Run as a mlflow project
       - name: Run mlflow project
@@ -44,7 +44,7 @@ jobs:
         run: |
           export MLFLOW_TRACKING_USERNAME=$DAGSHUB_USERNAME
           export MLFLOW_TRACKING_PASSWORD=$DAGSHUB_TOKEN
-          mlflow run MLproject --no-conda --env-manager=local 
+          mlflow run MLproject --env-manager=local 
       
       # Get latest run_id
       - name: Get latest MLflow run_id
