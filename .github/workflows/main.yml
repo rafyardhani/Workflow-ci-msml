@@ -42,6 +42,8 @@ jobs:
           DAGSHUB_USERNAME: ${{ secrets.DAGSHUB_USERNAME }}
           DAGSHUB_TOKEN: ${{ secrets.DAGSHUB_TOKEN }}
         run: |
+          export MLFLOW_TRACKING_USERNAME=$DAGSHUB_USERNAME
+          export MLFLOW_TRACKING_PASSWORD=$DAGSHUB_TOKEN
           mlflow run MLproject --no-conda --env-manager=local 
       
       # Get latest run_id
