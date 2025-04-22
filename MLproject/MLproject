@@ -8,5 +8,7 @@ entry_points:
       n_estimators: {type: int, default: 505}
       max_depth: {type: int, default: 35}
       dataset : {type: string, default: "train_pca.csv"}
+      dagshub_username: {type: string}
+      dagshub_token: {type: string}
     command: >
       python modelling.py {n_estimators} {max_depth} {dataset} 

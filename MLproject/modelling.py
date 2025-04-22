@@ -11,11 +11,11 @@ import dagshub
 if __name__ == "__main__":
     warnings.filterwarnings("ignore")
     np.random.seed(40)
-    dagshub_token = os.environ.get("DAGSHUB_TOKEN")
-    dagshub_username = os.environ.get("DAGSHUB_USERNAME")
+    dagshub_username = sys.argv[4]
+    dagshub_token = sys.argv[5]
     os.environ['MLFLOW_TRACKING_USERNAME'] = dagshub_username
     os.environ['MLFLOW_TRACKING_PASSWORD'] = dagshub_token
-            
+
     mlflow_tracking_uri = f"https://dagshub.com/{dagshub_username}/mlsystem-studi-kasus-cs.mlflow"
     mlflow.set_tracking_uri(mlflow_tracking_uri)
     # Read the wine-quality csv file (make sure you're running this from the root of MLflow!)
