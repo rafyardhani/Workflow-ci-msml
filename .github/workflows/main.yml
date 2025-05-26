@@ -55,9 +55,16 @@ jobs:
       # Get latest run_id
       - name: Get latest MLflow run_id
         run: |
-          RUN_ID=$(ls -td mlruns/0/*/ | head -n 1 | cut -d'/' -f3)
-          echo "RUN_ID=$RUN_ID" >> $GITHUB_ENV
-          echo "Latest run_id: $RUN_ID"
+          echo "Getting latest run ID..."
+          python <<EOF
+          import mlflow
+          client = mlflow.tracking.MlflowClient()
+          runs = client.search_runs(experiment_ids=["1"], order_by=["start_time DESC"])
+          run_id = runs[0].info.run_id
+          print(f"Latest run ID: {RUN_ID}")
+          with open("${{ github.env }}", "a") as f:
+              f.write(f"RUN_ID={RUN_ID}\n")
+          EOF
           
       - name: Install Python dependencies
         run: |
