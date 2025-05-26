@@ -52,19 +52,10 @@ jobs:
         run: |
           mlflow run MLproject --env-manager=local 
       
-      # Get latest run_id
-      - name: Get latest MLflow run_id
+      - name: Show file structure from working directory
         run: |
-          echo "Getting latest run ID..."
-          python <<EOF
-          import mlflow
-          client = mlflow.tracking.MlflowClient()
-          runs = client.search_runs(experiment_ids=["1"], order_by=["start_time DESC"])
-          run_id = runs[0].info.run_id
-          print(f"Latest run ID: {RUN_ID}")
-          with open("${{ github.env }}", "a") as f:
-              f.write(f"RUN_ID={RUN_ID}\n")
-          EOF
+          echo "📁 Struktur direktori saat ini:"
+          find . -type f | sort
           
       - name: Install Python dependencies
         run: |
