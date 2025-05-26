@@ -11,12 +11,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    
-    env:
-      MLFLOW_TRACKING_URI     : https://dagshub.com/rafyardhani/mlsystem-studi-kasus-cs.mlflow/
-      MLFLOW_TRACKING_USERNAME: rafyardhani
-      MLFLOW_TRACKING_PASSWORD: ${{ secrets.MLFLOW_TRACKING_PASSWORD }}
-      
+
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE
       - uses: actions/checkout@v3
@@ -26,16 +21,6 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: "3.12.7"
-
-      # Check all environment variables are correctly set
-      - name: Check Env
-        run: |
-          echo "Python version: $(python --version)"
-          echo "MLFLOW_TRACKING_URI: $MLFLOW_TRACKING_URI"
-          echo "MLFLOW_TRACKING_USERNAME: $MLFLOW_TRACKING_USERNAME"
-          echo "MLFLOW_TRACKING_PASSWORD is set: ${MLFLOW_TRACKING_PASSWORD:+yes}"
-          echo "Current directory: $(pwd)"
-          ls -la
       
       # Check Env Variables
       - name: Check Env
@@ -52,10 +37,12 @@ jobs:
         run: |
           mlflow run MLproject --env-manager=local 
       
-      - name: Show file structure from working directory
+      # Get latest run_id
+      - name: Get latest MLflow run_id
         run: |
-          echo "📁 Struktur direktori saat ini:"
-          find . -type f | sort
+          RUN_ID=$(ls -td mlruns/0/*/ | head -n 1 | cut -d'/' -f3)
+          echo "RUN_ID=$RUN_ID" >> $GITHUB_ENV
+          echo "Latest run_id: $RUN_ID"
           
       - name: Install Python dependencies
         run: |
